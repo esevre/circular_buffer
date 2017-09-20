@@ -2,41 +2,31 @@
 // Created by Erik Sevre on 9/20/17.
 //
 
-#ifndef CIRCULAR_BUFFER_CIRCLE_BUFFER_HPP
-#define CIRCULAR_BUFFER_CIRCLE_BUFFER_HPP
+#ifndef CIRCULAR_BUFFER_CIRCLE_BUFFER_ARRAY_HPP
+#define CIRCULAR_BUFFER_CIRCLE_BUFFER_ARRAY_HPP
 
-/** TODO: 밑에 있는 코드를 구현 해야함! CircularBuffer here
-*
-* Its constructor should take the size of the buffer as an argument
-*
-* It needs to have the functions:
-* - count() which returns how many things are in the buffer
-* - full() which returns true iff the buffer is full
-* - add() which takes an element and adds it to the buffer (you can assume the buffer is not full)
-* - remove() which removes the next element from the buffer (you can assume the buffer is not empty)
-*/
 
-#include <vector>
+#include <array>
 #include "circle_buffer_abstract.hpp"
 
-namespace vector_buffer{
-
+namespace array_buffer {
+    template <int size>
     class CircularBuffer : public cbuff {
     private:
-        const size_t size;
-        std::vector<char> buffer;
+        //const size_t size;
+        std::array<char, size> buffer;
         size_t head = 0; // index at the head, where new elts are added to the buffer
         size_t tail = 0; // index to the tail, where old elts are removed
 
     public:
-        explicit CircularBuffer(size_t size) : size(size), buffer(size) {}
+        CircularBuffer() {}
         unsigned long count() const {
             if (head >= tail) {
                 return head - tail;
             }
             return head - tail + size;
         }
-        bool full() const { return this->size == this->count(); }
+        bool full() const { return size == this->count(); }
         bool empty() const {return this->count() == 0; }
         void add(char c) {
             // todo: add check for full buffer
@@ -55,4 +45,4 @@ namespace vector_buffer{
 }
 
 
-#endif //CIRCULAR_BUFFER_CIRCLE_BUFFER_HPP
+#endif //CIRCULAR_BUFFER_CIRCLE_BUFFER_ARRAY_HPP
