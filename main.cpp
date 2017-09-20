@@ -6,7 +6,7 @@
  *
  *  My answer to a post in C++ OpenSource Study (A Korean Facebook C++ community)
  *
- *  Main function was provided, I wrote a curcle_buffer class to fulfill the requirements.
+ *  Main function was provided, I wrote a circle_buffer class to fulfill the requirements.
  */
 
 

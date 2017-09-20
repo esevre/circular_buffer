@@ -30,21 +30,21 @@ namespace vector_buffer{
 
     public:
         explicit CircularBuffer(size_t size) : size(size), buffer(size) {}
-        unsigned long count() const {
+        unsigned long count() const override {
             if (head >= tail) {
                 return head - tail;
             }
             return head - tail + size;
         }
-        bool full() const { return this->size == this->count(); }
-        bool empty() const {return this->count() == 0; }
-        void add(char c) {
+        bool full() const override { return this->size == this->count(); }
+        bool empty() const override {return this->count() == 0; }
+        void add(char c) override {
             // todo: add check for full buffer
             buffer[head] = c;
             ++head;
             head%=size;
         }
-        char remove() {
+        char remove() override {
             // todo: add check for empty buffer
             char val = buffer[tail];
             ++tail;

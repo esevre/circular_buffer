@@ -69,6 +69,7 @@ void test(cbuff &buf) {
         std::cout << "4 - Fail: tried to remove elloworld, got " << itwas << '\n';
         ++retval;
     }
+    std::cout << "total error count: " << retval << "\n";
 }
 
 #endif //CIRCULAR_BUFFER_TEST_CIRCLE_BUFFER_HPP
