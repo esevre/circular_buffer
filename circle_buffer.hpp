@@ -37,7 +37,7 @@ namespace vector_buffer{
             return head - tail + size;
         }
         bool full() const override { return this->size == this->count(); }
-        bool empty() const override {return this->count() == 0; }
+        bool empty() const  {return this->count() == 0; }
         void add(char c) override {
             // todo: add check for full buffer
             buffer[head] = c;
